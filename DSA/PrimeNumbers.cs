@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace DSA
 {
     /// <summary>
-    /// <para>This class checks, whether a number is prime.<para>
+    /// This class checks, whether a number is prime.
     /// </summary>
     public static class PrimeNumbers
     {
@@ -15,7 +15,7 @@ namespace DSA
         ///     <para>
         ///         T(n) = O(sqrt(n))
         ///         M(n) = O(1)
-        ///     <para>
+        ///     </para>
         /// </summary>
         /// <param name="n">The test number</param>
         public static bool IsPrime(int n)

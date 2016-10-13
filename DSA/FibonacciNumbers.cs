@@ -3,7 +3,7 @@
 namespace DSA
 {
     /// <summary>
-    /// <para>This class implements the count Fibonacci numbers.<para>
+    ///  This class implements the count Fibonacci numbers.
     /// </summary>
     static class FibonacciNumbers
     {
@@ -12,7 +12,7 @@ namespace DSA
         ///         Linear method of counting the number Fibonacci.
         ///         T(n) = O(n)
         ///         M(n) = O(1)
-        ///     <para>
+        ///     </para>
         /// </summary>
         /// <param name="n">Number of sequence element</param>
         public static int Get(int n)
@@ -39,7 +39,7 @@ namespace DSA
         ///         Recursive method of counting the number Fibonacci.
         ///         T(n) = Ω(1.6^n)
         ///         M(n) = O(n)
-        ///     <para>
+        ///     </para>
         /// </summary>
         /// <param name="n">Number of sequence element</param>
         public static int GetRecursively(int n)

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace DSA
 {
     /// <summary>
-    /// <para>This class includes a variety of search algorithms.<para>
+    /// This class includes a variety of search algorithms.
     /// </summary>
     class SearchAlgorithms
     {
@@ -15,7 +15,7 @@ namespace DSA
         ///     <para>
         ///         T(n) = O(n)
         ///         M(n) = O(1)
-        ///     <para>
+        ///     </para>
         /// </summary>
         /// <param name="array">Array to search</param>
         /// <param name="searchValue">searchValue</param>
@@ -34,7 +34,7 @@ namespace DSA
         ///     <para>
         ///         T(n) = O(n)
         ///         M(n) = O(1)
-        ///     <para>
+        ///     </para>
         /// </summary>
         /// <param name="array">Array to search</param>
         /// <param name="searchValue">searchValue</param>
@@ -51,7 +51,7 @@ namespace DSA
         ///     <para>
         ///         T(n) = θ(n)
         ///         M(n) = O(1)
-        ///     <para>
+        ///     </para>
         /// </summary>
         /// <param name="array">Array to search</param>
         public static int MaxElementLinear(int[] array)
@@ -73,7 +73,7 @@ namespace DSA
         ///     <para>
         ///         T(n) = O(log n)
         ///         M(n) = O(log n)
-        ///     <para>
+        ///     </para>
         /// </summary>
         /// <param name="array">Array to search</param>
         /// <param name="element">The element that is looking</param>
@@ -109,7 +109,7 @@ namespace DSA
         ///     <para>
         ///         T(n) = O(log n)
         ///         M(n) = O(1)
-        ///     <para>
+        ///     </para>
         /// </summary>
         /// <param name="array">Array to search</param>
         /// <param name="element">The element that is looking</param>

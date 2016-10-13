@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace DSA
 {
     /// <summary>
-    /// <para>Fast number counting in some degree.<para>
+    /// Fast number counting in some degree.
     /// </summary>
     public static class Power
     {
@@ -15,7 +15,7 @@ namespace DSA
         ///     <para>
         ///         T(n) = O(n)
         ///         M(n) = O(1)
-        ///     <para>
+        ///     </para>
         /// </summary>
         /// <param name="number">Number, wich power</param>
         /// <param name="power">Degree of power</param>
@@ -37,7 +37,7 @@ namespace DSA
         ///     <para>
         ///         T(n) = O(log n)
         ///         M(n) = O(1)
-        ///     <para>
+        ///     </para>
         /// </summary>
         /// <param name="number">Number, wich power</param>
         /// <param name="power">Degree of power</param>
