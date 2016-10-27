@@ -89,6 +89,13 @@ namespace DSA
             enumaratorIndex = -1;
         }
 
+        /// <summary>
+        ///     <para>
+        ///         T(n) = O(n)
+        ///         T(n) = Ω(1)
+        ///     </pama>
+        /// </summary>
+        /// <param name="item">Added element</param>
         public void Add(T item)
         {
             if (arrayIndex == capacity - 1)
