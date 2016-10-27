@@ -10,7 +10,7 @@ namespace DSA
     {
         static void Main(string[] args)
         {
-            DynamicArray<int> a = new DynamicArray<int>(5);
+            
         }
     }
 }
