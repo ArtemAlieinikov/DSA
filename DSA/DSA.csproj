@@ -47,8 +47,10 @@
     <Compile Include="PrimeNumbers.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueueTest.cs" />
     <Compile Include="SearchAlgorithms.cs" />
     <Compile Include="SinglyLinkedList.cs" />
+    <Compile Include="Stack.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
