@@ -21,8 +21,13 @@ namespace DSA
         /// <param name="power">Degree of power</param>
         public static double GetPowerFirstVersion(double number, int power)
         {
-            if (power <= 0) return 1.0;
             double result = 1.0;
+
+            if (power <= 0)
+            {
+                return 1.0;
+            }
+            else { }
             
             while(power > 0)
             {
@@ -48,15 +53,23 @@ namespace DSA
              * n^6 = (n^n) * (n^n) * (n^n);
              * n^7 = (n^n) * (n^n) * (n^n) * n;
              */
-            if (power <= 0) return 1;
-
             double result = 1;
             double numberInDegreeOf2 = number;
+
+            if (power <= 0)
+            {
+                return 1;
+            }
+            else { }
+
 
             while(power > 0)
             {
                 if ((power & 1) == 1) //also we can write (power % 2)
+                {
                     result *= numberInDegreeOf2;
+                }
+                else { }
 
                 numberInDegreeOf2 *= numberInDegreeOf2;
                 power >>= 1; //also we can write (power /= 2)

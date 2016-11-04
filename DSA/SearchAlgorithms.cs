@@ -21,13 +21,19 @@ namespace DSA
         /// <param name="searchValue">searchValue</param>
         public static int LinearSearch(int[] array, int searchValue)
         {
+            int result = -1;
+
             for (int i = 0; i < array.Length; ++i)
             {
                 if (array[i] == searchValue)
-                    return i;
+                {
+                    result = i;
+                    break;
+                }
+                else { }
             }
 
-            return -1;
+            return result;
         }
 
         /// <summary>
@@ -40,11 +46,19 @@ namespace DSA
         /// <param name="searchValue">searchValue</param>
         public static bool HasElementLinear(int[] array, int searchValue)
         {
-            for (int i = 0; i < array.Length; ++i)
-                if (array[i] == searchValue)
-                    return true;
+            bool result = false;
 
-            return false;
+            for (int i = 0; i < array.Length; ++i)
+            {
+                if (array[i] == searchValue)
+                {
+                    result = true;
+                    break;
+                }
+                else { }
+            }
+
+            return result;
         }
 
         /// <summary>
@@ -64,6 +78,7 @@ namespace DSA
                 { 
                     maxElement = array[i];
                 }
+                else { }
             }
 
             return maxElement;
@@ -89,20 +104,34 @@ namespace DSA
             if(lastIndex - firstIndex == 1)
             {
                 if (array[lastIndex] == element)
+                {
                     return lastIndex;
+                }
                 else if (array[firstIndex] == element)
+                {
                     return firstIndex;
+                }
                 else
+                {
                     return -1;
+                }
             }
+            else { }
 
             if (element == array[middle])
+            {
                 return middle;
+            }
+            else { }
 
             if (element > array[middle])
+            {
                 return BinarySearchRecursively(array, element, middle, lastIndex);
+            }
             else
+            {
                 return BinarySearchRecursively(array, element, firstIndex, middle);
+            }
         }
 
         /// <summary>
@@ -122,20 +151,34 @@ namespace DSA
             {
                 int mid = (last + first) / 2;
 
-                if(array[mid] == element) 
+                if(array[mid] == element)
+                {
                     return mid;
+                }
+                else { }
 
                 if (element > array[mid])
+                {
                     first = mid;
-                else 
+                }
+                else
+                {
                     last = mid;
+                }
             }
 
             if (array[first] == element)
+            {
                 return first;
+            }
             else if (array[last] == element)
+            {
                 return last;
-            else return -1;
+            }
+            else
+            {
+                return -1;
+            }
         }
     }
 }

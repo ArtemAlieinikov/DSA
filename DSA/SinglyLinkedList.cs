@@ -34,14 +34,14 @@ namespace DSA
     /// Element that is node.
     /// </summary>
     /// <typeparam name="T">Type of linkedList data.</typeparam>
-    class SinglyLinkedNode<T>
+    public class SinglyLinkedNode<T>
     {
         public T Data { get; set; }
         public SinglyLinkedNode<T> Next { get; set; }
 
-        public SinglyLinkedNode(T data)
+        public SinglyLinkedNode(T Data)
         {
-            Data = data;
+            this.Data = Data;
         }
     }
 
@@ -49,26 +49,50 @@ namespace DSA
     /// Singly linked list.
     /// </summary>
     /// <typeparam name="T">Type of data of list node</typeparam>
-    class SinglyLinkedList<T> : ISinglyLinkedList<T>
+    public class SinglyLinkedList<T> : ISinglyLinkedList<T>
     {
-        SinglyLinkedNode<T> head;
-        SinglyLinkedNode<T> tail;
+        private SinglyLinkedNode<T> head;
+        private SinglyLinkedNode<T> tail;
+
+        private int _count;
 
         //Field which uses for foreach realization.
         public SinglyLinkedNode<T> enumeratorNode;
 
-        int _count;
+        public int Count 
+        { 
+            get 
+            { 
+                return _count; 
+            } 
+        }
 
-        public int Count { get { return _count; } }
+        public bool IsEmpty 
+        { 
+            get 
+            { 
+                return (_count == 0); 
+            } 
+        }
 
-        public bool IsEmpty { get { return (_count == 0); } }
+        public SinglyLinkedNode<T> GetFirst 
+        { 
+            get 
+            { 
+                return head; 
+            } 
+        }
 
-        public SinglyLinkedNode<T> GetFirst { get { return head; } }
-
-        public SinglyLinkedNode<T> GetLast { get { return tail; } }
+        public SinglyLinkedNode<T> GetLast 
+        { 
+            get 
+            { 
+                return tail; 
+            } 
+        }
 
         //The method that sets the enumerator node in the head node.
-        void SetEnumeratorNode()
+        private void SetEnumeratorNode()
         {
             enumeratorNode = head;
         }
@@ -141,7 +165,9 @@ namespace DSA
                         head = current.Next;
 
                         if (head == null)
+                        {
                             tail = null;
+                        }
 
                         this.SetEnumeratorNode();
                     }
@@ -150,12 +176,15 @@ namespace DSA
                         previous.Next = current.Next;
 
                         if (current.Next == null)
+                        {
                             tail = previous;
+                        }
                     }
 
                     --_count;
                     return true;
                 }
+                else { }
 
                 previous = current;
                 current = current.Next;
@@ -174,19 +203,22 @@ namespace DSA
         /// <returns>boolean - whether the list contains the desired element</returns>
         public bool Contains(T data)
         {
+            bool result = false;
             SinglyLinkedNode<T> iteratorNode = head;
 
             while(iteratorNode != null)
             {
                 if(iteratorNode.Data.Equals(data))
                 {
-                    return true;
+                    result = true;
+                    break;
                 }
+                else { }
 
                 iteratorNode = iteratorNode.Next;
             }
 
-            return false;
+            return result;
         }
 
         public void Clear()
@@ -210,7 +242,6 @@ namespace DSA
 
         public bool MoveNext()
         {
-
             if (_count <= 0 || enumeratorNode == null)
             {
                 this.Reset();
@@ -231,7 +262,10 @@ namespace DSA
         //The IEnumerator interface realisation.
         object IEnumerator.Current
         {
-            get { return enumeratorNode.Data; }
+            get 
+            { 
+                return enumeratorNode.Data; 
+            }
         }
 
         //The IEnumerable<T> interface realisation.
@@ -268,11 +302,15 @@ namespace DSA
                     fastIterator = fastIterator.Next;
 
                     if (fastIterator == null)
-                    { return false; }
+                    { 
+                        return false; 
+                    }
                     else { }
 
                     if (slowIterator == fastIterator)
-                    { return true; }
+                    { 
+                        return true; 
+                    }
                     else { }
                 }
 
@@ -292,7 +330,9 @@ namespace DSA
         public SinglyLinkedNode<T> getNodeByNumberFromEnd(int nodePositionFromEnd)
         {
             if(nodePositionFromEnd > Count || nodePositionFromEnd <= 0)
-            { throw new FormatException("Selected position is incorrect"); }
+            { 
+                throw new FormatException("Selected position is incorrect"); 
+            }
             else { }
 
             SinglyLinkedNode<T> aimNode = GetFirst;

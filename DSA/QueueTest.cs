@@ -8,17 +8,23 @@ namespace DSA
 {
     class QueueTest<T>
     {
-        T[] buffer;
-        int head, tail;
+        private T[] buffer;
+        private int head, tail;
 
         public bool IsEmpty
         {
-            get { return head == tail; }
+            get 
+            { 
+                return head == tail; 
+            }
         }
 
         public bool IsFull
         {
-            get { return ((head - tail + buffer.Length) % buffer.Length == 1); }
+            get 
+            { 
+                return ((head - tail + buffer.Length) % buffer.Length == 1); 
+            }
         }
 
         public QueueTest(int size)
@@ -36,6 +42,7 @@ namespace DSA
             {
                 throw new InvalidOperationException("Queue is empty");
             }
+            else { }
             
             result = buffer[head++];
 
@@ -43,6 +50,7 @@ namespace DSA
             {
                 head = 0;
             }
+            else { }
 
             return result;
         }
@@ -53,6 +61,7 @@ namespace DSA
             {
                 throw new InvalidOperationException("Queue is full");
             }
+            else { }
 
             buffer[tail++] = item;
 
@@ -60,6 +69,7 @@ namespace DSA
             {
                 tail = 0;
             }
+            else { }
         }
     }
 }

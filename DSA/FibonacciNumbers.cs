@@ -21,7 +21,10 @@ namespace DSA
             int currentNumber = 1; //F(1)
 
             if (n <= 1)
+            {
                 return 1;
+            }
+            else { }
 
             for(int i = 2; i <= n; ++i)
             {
@@ -31,7 +34,6 @@ namespace DSA
             }
 
             return currentNumber;
-
         }
 
         /// <summary>
@@ -45,7 +47,11 @@ namespace DSA
         public static int GetRecursively(int n)
         {
             if (n <= 1)
+            {
                 return 1;
+            }
+            else { }
+
             return GetRecursively(n - 1) + GetRecursively(n - 2);
         }
     }

@@ -6,24 +6,33 @@ using System.Threading.Tasks;
 
 namespace DSA
 {
-    class StackTest<T>
+    public class StackTest<T>
     {
-        int index;
-        T[] buffer;
+        private int index;
+        private T[] buffer;
 
         public int Capacity 
         {
-            get { return buffer.Length; }
+            get 
+            { 
+                return buffer.Length; 
+            }
         }
 
         public int Count
         {
-            get { return index < 0 ? 0 : index + 1; }
+            get 
+            { 
+                return index < 0 ? 0 : index + 1; 
+            }
         }
 
         public StackTest(int size)
         {
-            if (size <= 0) { size = 1; }
+            if (size <= 0) 
+            { 
+                size = 1; 
+            }
             else { }
 
             index = -1;

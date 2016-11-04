@@ -21,7 +21,10 @@ namespace DSA
         public static bool IsPrime(int n)
         {
             if (n == 1)
+            {
                 return false;
+            }
+            else { }
 
             /*Суть в том, что для проверки на простоту достаточно 
              * проверить на целочисленное деление проверяемое число 
@@ -30,7 +33,10 @@ namespace DSA
             for(int i = 2; (i * i) <= n; ++i)
             {
                 if ((n % i) == 0)
+                {
                     return false;
+                }
+                else { }
             }
 
             return true;
