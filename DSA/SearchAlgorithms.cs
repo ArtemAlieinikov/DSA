@@ -75,7 +75,7 @@ namespace DSA
             for (int i = 1; i < array.Length; ++i)
             {
                 if (maxElement < array[i])
-                { 
+                {
                     maxElement = array[i];
                 }
                 else { }
@@ -101,7 +101,7 @@ namespace DSA
 
             int middle = (lastIndex + firstIndex) / 2;
 
-            if(lastIndex - firstIndex == 1)
+            if (lastIndex - firstIndex == 1)
             {
                 if (array[lastIndex] == element)
                 {
@@ -147,11 +147,11 @@ namespace DSA
             int first = 0;
             int last = array.Length - 1;
 
-            while(last - first != 1)
+            while (last - first != 1)
             {
                 int mid = (last + first) / 2;
 
-                if(array[mid] == element)
+                if (array[mid] == element)
                 {
                     return mid;
                 }

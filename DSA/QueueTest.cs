@@ -13,17 +13,17 @@ namespace DSA
 
         public bool IsEmpty
         {
-            get 
-            { 
-                return head == tail; 
+            get
+            {
+                return head == tail;
             }
         }
 
         public bool IsFull
         {
-            get 
-            { 
-                return ((head - tail + buffer.Length) % buffer.Length == 1); 
+            get
+            {
+                return ((head - tail + buffer.Length) % buffer.Length == 1);
             }
         }
 
@@ -38,15 +38,15 @@ namespace DSA
         {
             T result;
 
-            if(head == tail)
+            if (head == tail)
             {
                 throw new InvalidOperationException("Queue is empty");
             }
             else { }
-            
+
             result = buffer[head++];
 
-            if(head == buffer.Length)
+            if (head == buffer.Length)
             {
                 head = 0;
             }
@@ -65,7 +65,7 @@ namespace DSA
 
             buffer[tail++] = item;
 
-            if(tail == buffer.Length)
+            if (tail == buffer.Length)
             {
                 tail = 0;
             }

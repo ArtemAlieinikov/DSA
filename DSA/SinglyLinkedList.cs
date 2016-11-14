@@ -59,36 +59,36 @@ namespace DSA
         //Field which uses for foreach realization.
         public SinglyLinkedNode<T> enumeratorNode;
 
-        public int Count 
-        { 
-            get 
-            { 
-                return _count; 
-            } 
+        public int Count
+        {
+            get
+            {
+                return _count;
+            }
         }
 
-        public bool IsEmpty 
-        { 
-            get 
-            { 
-                return (_count == 0); 
-            } 
+        public bool IsEmpty
+        {
+            get
+            {
+                return (_count == 0);
+            }
         }
 
-        public SinglyLinkedNode<T> GetFirst 
-        { 
-            get 
-            { 
-                return head; 
-            } 
+        public SinglyLinkedNode<T> GetFirst
+        {
+            get
+            {
+                return head;
+            }
         }
 
-        public SinglyLinkedNode<T> GetLast 
-        { 
-            get 
-            { 
-                return tail; 
-            } 
+        public SinglyLinkedNode<T> GetLast
+        {
+            get
+            {
+                return tail;
+            }
         }
 
         //The method that sets the enumerator node in the head node.
@@ -156,11 +156,11 @@ namespace DSA
             SinglyLinkedNode<T> current = head;
             SinglyLinkedNode<T> previous = null;
 
-            while(current != null)
+            while (current != null)
             {
-                if(current.Data.Equals(data))
+                if (current.Data.Equals(data))
                 {
-                    if(previous == null)
+                    if (previous == null)
                     {
                         head = current.Next;
 
@@ -206,9 +206,9 @@ namespace DSA
             bool result = false;
             SinglyLinkedNode<T> iteratorNode = head;
 
-            while(iteratorNode != null)
+            while (iteratorNode != null)
             {
-                if(iteratorNode.Data.Equals(data))
+                if (iteratorNode.Data.Equals(data))
                 {
                     result = true;
                     break;
@@ -232,9 +232,9 @@ namespace DSA
         //which also include IEnumerator and IDisposable.
         public T Current
         {
-            get 
+            get
             {
-                T item = enumeratorNode.Data; 
+                T item = enumeratorNode.Data;
                 enumeratorNode = enumeratorNode.Next;
                 return item;
             }
@@ -262,9 +262,9 @@ namespace DSA
         //The IEnumerator interface realisation.
         object IEnumerator.Current
         {
-            get 
-            { 
-                return enumeratorNode.Data; 
+            get
+            {
+                return enumeratorNode.Data;
             }
         }
 
@@ -294,22 +294,22 @@ namespace DSA
         {
             SinglyLinkedNode<T> slowIterator = firstNode;
             SinglyLinkedNode<T> fastIterator = firstNode;
-            
-            while(true)
-            { 
-                for(int i = 0; i < 2; ++i)
+
+            while (true)
+            {
+                for (int i = 0; i < 2; ++i)
                 {
                     fastIterator = fastIterator.Next;
 
                     if (fastIterator == null)
-                    { 
-                        return false; 
+                    {
+                        return false;
                     }
                     else { }
 
                     if (slowIterator == fastIterator)
-                    { 
-                        return true; 
+                    {
+                        return true;
                     }
                     else { }
                 }
@@ -317,7 +317,7 @@ namespace DSA
                 slowIterator = slowIterator.Next;
             }
         }
-        
+
         /// <summary>
         ///     <para>
         ///         Get node by number from the end of list.
@@ -329,22 +329,22 @@ namespace DSA
         /// <exception cref="System.FormatException">Throw when the argument is greater than the length of the list.</exception>
         public SinglyLinkedNode<T> getNodeByNumberFromEnd(int nodePositionFromEnd)
         {
-            if(nodePositionFromEnd > Count || nodePositionFromEnd <= 0)
-            { 
-                throw new FormatException("Selected position is incorrect"); 
+            if (nodePositionFromEnd > Count || nodePositionFromEnd <= 0)
+            {
+                throw new FormatException("Selected position is incorrect");
             }
             else { }
 
             SinglyLinkedNode<T> aimNode = GetFirst;
             SinglyLinkedNode<T> lastNode = GetFirst;
 
-            while(nodePositionFromEnd > 0)
+            while (nodePositionFromEnd > 0)
             {
                 lastNode = lastNode.Next;
                 --nodePositionFromEnd;
             }
 
-            while(lastNode != null)
+            while (lastNode != null)
             {
                 aimNode = aimNode.Next;
                 lastNode = lastNode.Next;

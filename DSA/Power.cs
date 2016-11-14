@@ -28,8 +28,8 @@ namespace DSA
                 return 1.0;
             }
             else { }
-            
-            while(power > 0)
+
+            while (power > 0)
             {
                 result *= number;
                 power--;
@@ -63,7 +63,7 @@ namespace DSA
             else { }
 
 
-            while(power > 0)
+            while (power > 0)
             {
                 if ((power & 1) == 1) //also we can write (power % 2)
                 {

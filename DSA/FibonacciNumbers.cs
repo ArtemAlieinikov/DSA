@@ -26,7 +26,7 @@ namespace DSA
             }
             else { }
 
-            for(int i = 2; i <= n; ++i)
+            for (int i = 2; i <= n; ++i)
             {
                 int temp = currentNumber;
                 currentNumber += previousNumber; //F(i)
