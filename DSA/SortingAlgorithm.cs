@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DSA
 {
-    static class SortingAlgorithm
+    public static class SortingAlgorithm
     {
         /// <summary>
         /// T(n)= O(n^2)

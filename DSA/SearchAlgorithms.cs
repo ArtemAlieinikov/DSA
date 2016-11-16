@@ -9,7 +9,7 @@ namespace DSA
     /// <summary>
     /// This class includes a variety of search algorithms.
     /// </summary>
-    class SearchAlgorithms
+    public static class SearchAlgorithms
     {
         /// <summary>
         ///     <para>
