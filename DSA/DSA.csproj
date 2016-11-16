@@ -51,6 +51,7 @@
     <Compile Include="QueueTest.cs" />
     <Compile Include="SearchAlgorithms.cs" />
     <Compile Include="SinglyLinkedList.cs" />
+    <Compile Include="SortingAlgorithm.cs" />
     <Compile Include="Stack.cs" />
   </ItemGroup>
   <ItemGroup>
