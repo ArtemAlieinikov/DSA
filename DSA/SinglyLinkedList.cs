@@ -327,7 +327,7 @@ namespace DSA
         /// <param name="nodePositionFromEnd"></param>
         /// <returns>Seeking element, in SinglyLinkedNode format.</returns>
         /// <exception cref="System.FormatException">Throw when the argument is greater than the length of the list.</exception>
-        public SinglyLinkedNode<T> getNodeByNumberFromEnd(int nodePositionFromEnd)
+        public SinglyLinkedNode<T> GetNodeByNumberFromEnd(int nodePositionFromEnd)
         {
             if (nodePositionFromEnd > Count || nodePositionFromEnd <= 0)
             {
