@@ -124,7 +124,7 @@ namespace DSA
         ///         It works on the basis of operation Heapifi(ShiftDown).
         ///         This should work for the elements of the sequence from (n / 2 - 1) to 0 (indexes).
         ///         
-        ///         T(n) = O(n log n), where n - (0...(n / 2 - 1))
+        ///         T(n) = O(n), where n - (0...(n / 2 - 1)) for elements which have descendants.
         ///     </para>
         /// </summary>
         private void BuildHeap()
