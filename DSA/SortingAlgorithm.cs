@@ -75,6 +75,70 @@ namespace DSA
         }
 
         /// <summary>
+        /// T(n) = (n log n)
+        /// </summary>
+        /// <param name="array">Array which we want to sort</param>
+        public static void HeapSort(int[] array)
+        {
+            List<int> resultArray = array.ToList<int>();
+            BuildBinaryHeap(resultArray);
+            for (int i = 0; i < array.Length; ++i)
+            {
+                array[i] = resultArray[0];
+                resultArray[0] = resultArray[resultArray.Count - 1];
+                resultArray.RemoveAt(resultArray.Count - 1);
+                Heapify(resultArray, 0);
+            }
+        }
+
+        /// <summary>
+        /// T(n) = O(n log n);
+        /// </summary>
+        /// <param name="array">Array which we want to sort</param>
+        /// <param name="firstIndex">Start of array</param>
+        /// <param name="lastIndex">End of array</param>
+        public static void QuickSort(int[] array, int firstIndex, int lastIndex)
+        {
+            int left = firstIndex;
+            int right = lastIndex;
+            int middle = (firstIndex + lastIndex) / 2;
+
+            while (left < right)
+            {
+                while (array[left] < array[middle])
+                {
+                    ++left;
+                }
+
+                while (array[right] > array[middle])
+                {
+                    --right;
+                }
+
+                if (left <= right)
+                {
+                    Swap(ref array[left], ref array[right]);
+
+                    ++left;
+                    --right;
+                }
+                else { }
+            }
+
+            if (left < lastIndex)
+            {
+                QuickSort(array, left, lastIndex);
+            }
+            else { }
+
+            if (right > firstIndex)
+            {
+                QuickSort(array, firstIndex, right);
+            }
+            else { }
+        }
+
+        /// <summary>
         /// T(n) = O(1)
         /// </summary>
         /// <param name="a">First number</param>
@@ -84,6 +148,52 @@ namespace DSA
             int temp = a;
             a = b;
             b = temp;
+        }
+
+        /// <summary>
+        /// T(n) = O(n)
+        /// </summary>
+        /// <param name="array">Source array</param>
+        private static void BuildBinaryHeap(List<int> array)
+        {
+            int firstIndex = ((array.Count / 2) - 1);
+            for (int i = firstIndex; i >= 0; --i)
+            {
+                Heapify(array, i);
+            }
+        }
+
+        /// <summary>
+        /// T(n) = O(log n)
+        /// </summary>
+        /// <param name="array">Source array</param>
+        /// <param name="index">Index of element</param>
+        private static void Heapify(List<int> array, int index)
+        {
+            int firstChildIndex = index * 2 + 1;
+            int secondChildIndex = index * 2 + 2;
+            int largestElementIndex = index;
+
+            if ((firstChildIndex < array.Count) && (array[firstChildIndex] > array[largestElementIndex]))
+            {
+                largestElementIndex = firstChildIndex;
+            }
+            else { }
+
+            if ((secondChildIndex < array.Count) && (array[secondChildIndex] > array[largestElementIndex]))
+            {
+                largestElementIndex = secondChildIndex;
+            }
+            else { }
+
+            if (largestElementIndex != index)
+            {
+                int temp = array[index];
+                array[index] = array[largestElementIndex];
+                array[largestElementIndex] = temp;
+                Heapify(array, largestElementIndex);
+            }
+            else { }
         }
     }
 }
