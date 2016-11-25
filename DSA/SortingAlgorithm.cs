@@ -139,6 +139,25 @@ namespace DSA
         }
 
         /// <summary>
+        /// T(n) = O(n log n);
+        ///      where n - sum of the lengths merged arrays
+        /// </summary>
+        /// <param name="array">Array which we want to sort.</param>
+        /// <returns>Sorted array</returns>
+        public static int[] MergeSort(int[] array)
+        {
+            if (array.Length == 1)
+            {
+                return array;
+            }
+            else
+            {
+                int midIndex = array.Length / 2;
+                return Merge(MergeSort(array.Take(midIndex).ToArray()), MergeSort(array.Skip(midIndex).ToArray()));
+            }
+        }
+
+        /// <summary>
         /// T(n) = O(1)
         /// </summary>
         /// <param name="a">First number</param>
@@ -194,6 +213,51 @@ namespace DSA
                 Heapify(array, largestElementIndex);
             }
             else { }
+        }
+
+        /// <summary>
+        /// T(n) = O(n);
+        ///     where n - sum sum of the lengths merged arrays
+        /// </summary>
+        /// <param name="firtsArray">First array</param>
+        /// <param name="secondArray">Second Array</param>
+        /// <returns>Merged array</returns>
+        private static int[] Merge(int[] firtsArray, int[] secondArray)
+        {
+            int i = 0;
+            int j = 0;
+            int[] resultArray = new int[firtsArray.Length + secondArray.Length];
+
+            for ( ; i < firtsArray.Length && j < secondArray.Length; )
+            {
+                if (firtsArray[i] < secondArray[j])
+                {
+                    resultArray[i + j] = firtsArray[i];
+                    ++i;
+                }
+                else
+                {
+                    resultArray[i + j] = secondArray[j];
+                    ++j;
+                }
+            }
+
+            if (i == firtsArray.Length)
+            {
+                for ( ; j < secondArray.Length; ++j)
+                {
+                    resultArray[i + j] = secondArray[j];
+                }
+            }
+            else 
+            {
+                for ( ; i < firtsArray.Length; ++i)
+                {
+                    resultArray[i + j] = firtsArray[i];
+                }
+            }
+
+            return resultArray;
         }
     }
 }
