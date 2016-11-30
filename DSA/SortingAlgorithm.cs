@@ -9,7 +9,7 @@ namespace DSA
     public static class SortingAlgorithm
     {
         /// <summary>
-        /// T(n)= O(n^2)
+        ///     T(n)= O(n^2)
         /// </summary>
         /// <param name="array">sortable array</param>
         public static void SelectionSort(int[] array)
@@ -32,7 +32,7 @@ namespace DSA
         }
 
         /// <summary>
-        /// T(n) = O(n^2)
+        ///     T(n) = O(n^2)
         /// </summary>
         /// <param name="array">sortable array</param>
         public static void InsertionSort(int[] array)
@@ -47,7 +47,7 @@ namespace DSA
         }
 
         /// <summary>
-        /// T(n) = O(n^2)
+        ///     T(n) = O(n^2)
         /// </summary>
         /// <param name="array">sortable array</param>
         public static void BubbleSort(int[] array)
@@ -75,7 +75,7 @@ namespace DSA
         }
 
         /// <summary>
-        /// T(n) = (n log n)
+        ///     T(n) = (n log n)
         /// </summary>
         /// <param name="array">Array which we want to sort</param>
         public static void HeapSort(int[] array)
@@ -92,7 +92,7 @@ namespace DSA
         }
 
         /// <summary>
-        /// T(n) = O(n log n);
+        ///     T(n) = O(n log n);
         /// </summary>
         /// <param name="array">Array which we want to sort</param>
         /// <param name="firstIndex">Start of array</param>
@@ -139,11 +139,13 @@ namespace DSA
         }
 
         /// <summary>
-        /// T(n) = O(n log n);
-        ///      where n - sum of the lengths merged arrays
+        ///     <para>
+        ///         T(n) = O(n log n);
+        ///         where n - sum of the lengths merged arrays
+        ///     </para>
         /// </summary>
         /// <param name="array">Array which we want to sort.</param>
-        /// <returns>Sorted array</returns>
+        /// <returns>Sorted array.</returns>
         public static int[] MergeSort(int[] array)
         {
             if (array.Length == 1)
@@ -158,7 +160,54 @@ namespace DSA
         }
 
         /// <summary>
-        /// T(n) = O(1)
+        ///     <para>
+        ///         T(N) = O(N), where N - n + k
+        ///         where k - the size of the array of counters(countArray), and n - length of sorting array.
+        ///     </para>
+        /// </summary>
+        /// <param name="array">Array which we want to sort.</param>
+        /// <param name="minElementValue">The smallest value in the array.</param>
+        /// <param name="maxElementValue">The largest value in the array.</param>
+        /// <returns>Sorted array.</returns>
+        public static int[] CountingSort(int[] array, int minElementValue, int maxElementValue)
+        {
+            if (minElementValue > maxElementValue)
+            {
+                throw new FormatException("Max element cannot be smaller than min element");
+            }
+            else if (minElementValue == maxElementValue)
+            {
+                return array;
+            }
+            else { }
+
+            int countSize = Math.Abs(minElementValue - Math.Abs(maxElementValue)) + 1;
+            int[] countArray = new int[countSize];
+
+            foreach (int items in array)
+            {
+                int realIndex = items <= 0 ? items + Math.Abs(minElementValue) : items - Math.Abs(minElementValue);
+                ++countArray[realIndex];
+            }
+
+            int i = 0;
+            int j = 0;
+            for (; i < array.Length && j < countArray.Length; )
+            {
+                while (countArray[j] > 0)
+                {
+                    array[i] = minElementValue + j;
+                    ++i;
+                    --countArray[j];
+                }
+                ++j;
+            }
+
+            return array;
+        }
+
+        /// <summary>
+        ///     T(n) = O(1)
         /// </summary>
         /// <param name="a">First number</param>
         /// <param name="b">Second number</param>
@@ -170,7 +219,7 @@ namespace DSA
         }
 
         /// <summary>
-        /// T(n) = O(n)
+        ///     T(n) = O(n)
         /// </summary>
         /// <param name="array">Source array</param>
         private static void BuildBinaryHeap(List<int> array)
@@ -183,7 +232,7 @@ namespace DSA
         }
 
         /// <summary>
-        /// T(n) = O(log n)
+        ///     T(n) = O(log n)
         /// </summary>
         /// <param name="array">Source array</param>
         /// <param name="index">Index of element</param>
@@ -216,8 +265,10 @@ namespace DSA
         }
 
         /// <summary>
-        /// T(n) = O(n);
-        ///     where n - sum sum of the lengths merged arrays
+        ///     <para>
+        ///         T(n) = O(n);
+        ///         where n - sum sum of the lengths merged arrays
+        ///     </para>
         /// </summary>
         /// <param name="firtsArray">First array</param>
         /// <param name="secondArray">Second Array</param>
@@ -228,7 +279,7 @@ namespace DSA
             int j = 0;
             int[] resultArray = new int[firtsArray.Length + secondArray.Length];
 
-            for ( ; i < firtsArray.Length && j < secondArray.Length; )
+            for (; i < firtsArray.Length && j < secondArray.Length; )
             {
                 if (firtsArray[i] < secondArray[j])
                 {
@@ -244,14 +295,14 @@ namespace DSA
 
             if (i == firtsArray.Length)
             {
-                for ( ; j < secondArray.Length; ++j)
+                for (; j < secondArray.Length; ++j)
                 {
                     resultArray[i + j] = secondArray[j];
                 }
             }
-            else 
+            else
             {
-                for ( ; i < firtsArray.Length; ++i)
+                for (; i < firtsArray.Length; ++i)
                 {
                     resultArray[i + j] = firtsArray[i];
                 }
