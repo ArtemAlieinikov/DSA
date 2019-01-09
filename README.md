@@ -1,2 +1,4 @@
 # DSA
-Data Structures and Algorithms. For more information look to the README file.
+### Here presented next list of DSA:
+> 1. Binary Head realizatin
+> 2. Linked List realizatin.
