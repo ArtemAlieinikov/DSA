@@ -1,4 +1,4 @@
-# DSA contains realizations of search and sorting algorithms ans data structures realizatins.
+# DSA - detailed list
 ### List of Data structures were realized:
 > 1. **Binary Head** realization
 > 2. **Linked List** realization.
