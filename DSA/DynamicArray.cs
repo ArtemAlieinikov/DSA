@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DSA
 {
@@ -14,25 +11,13 @@ namespace DSA
     interface IDynamicArray<T>
     {
         //The number of elements that can contain an array
-        int Capacity
-        {
-            get;
-            //set;
-        }
+        int Capacity { get; }
 
         //The number of elements in the array
-        int Count
-        {
-            get;
-            //set;
-        }
+        int Count { get; }
 
         //Индексатор для доступа к элементам массива
-        T this[int index]
-        {
-            get;
-            set;
-        }
+        T this[int index] { get; set; }
 
         //The method to add an element to the end of the array
         void Add(T item);
@@ -41,11 +26,11 @@ namespace DSA
     /// <summary>
     ///  Enum to install an array of growth rate.
     /// </summary>
-    public enum growth : byte 
+    public enum ScaleIndex : byte 
     { 
         oneAndHalf, 
         twice, 
-        three 
+        three
     }
 
     /// <summary>
@@ -58,7 +43,7 @@ namespace DSA
         private int enumaratorIndex;
 
         private T[] buffer;
-        private growth growthRate;
+        private ScaleIndex growthRate;
 
         public int Capacity
         {
@@ -66,7 +51,6 @@ namespace DSA
             { 
                 return capacity; 
             }
-            //set { throw new Exception ("You can not change capasity parameter"); }
         }
 
         public int Count
@@ -75,22 +59,21 @@ namespace DSA
             { 
                 return arrayIndex + 1; 
             }
-            //set { throw new Exception("You can not change count parameter"); }
         }
 
-        public DynamicArray (int arraySize) : this (arraySize, growth.twice)
+        public DynamicArray (int arraySize) 
+            : this (arraySize, ScaleIndex.twice)
         { }
 
-        public DynamicArray(int arraySize, growth growthRate)
+        public DynamicArray(int arraySize, ScaleIndex scaleIndex)
         {
             if (arraySize < 0)
             {
-                throw new Exception("Cannot create an array with a negative size");
+                throw new ArgumentException("Cannot create an array with a negative size");
             }
-            else { }
 
             buffer = new T[arraySize];
-            this.growthRate = growthRate;
+            growthRate = scaleIndex;
 
             arrayIndex = -1;
             capacity = buffer.Length;
@@ -109,9 +92,8 @@ namespace DSA
         {
             if (arrayIndex == capacity - 1)
             {
-                this.bufferGrowth();
+                BufferGrowth();
             }
-            else { }
 
             ++arrayIndex;
             buffer[arrayIndex] = item;
@@ -121,22 +103,22 @@ namespace DSA
         /// Method which increases the capacity of the array 
         /// to the specified growth rate.
         /// </summary>
-        private void bufferGrowth()
+        private void BufferGrowth()
         {
             T[] newBuffer;
 
             switch (growthRate)
             {
-                case growth.oneAndHalf:
+                case ScaleIndex.oneAndHalf:
                     capacity = (int)(capacity * 1.5);
                     break;
 
-                case growth.twice:
-                    capacity = capacity * 2;
+                case ScaleIndex.twice:
+                    capacity *= 2;
                     break;
 
-                case growth.three:
-                    capacity = capacity * 3;
+                case ScaleIndex.three:
+                    capacity *= 3;
                     break;
             }
 
@@ -156,9 +138,8 @@ namespace DSA
             {
                 if((index < 0) || (index > arrayIndex))
                 {
-                    throw new Exception("Incorrect index");
+                    throw new ArgumentOutOfRangeException("Incorrect index");
                 }
-                else { }
 
                 return buffer[index];
             }
@@ -167,9 +148,8 @@ namespace DSA
             {
                 if ((index < 0) || (index > capacity))
                 {
-                    throw new Exception("Incorrect index");
+                    throw new ArgumentOutOfRangeException("Incorrect index");
                 }
-                else { }
 
                 arrayIndex = index;
                 buffer[index] = value;
@@ -180,14 +160,16 @@ namespace DSA
         //which also include IEnumerator and IDisposable.
         public bool MoveNext()
         {
+            var result = true;
+
             if(++enumaratorIndex > arrayIndex)
             {
-                this.Reset();
-                return false;
-            }
-            else { }
+                Reset();
 
-            return true;
+                result = false;
+            }
+
+            return result;
         }
 
         public void Reset()

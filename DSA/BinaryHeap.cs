@@ -1,38 +1,29 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DSA
 {
     /// <summary>
     ///     <para>
     ///         A binary heap is a heap data structure. Binary heaps are a common way of implementing priority queues.
-    ///         The binary heap was introduced by J. W. J. Williams in 1964, as a data structure for the heapsort.
     ///     </para>
     /// </summary>
     public class BinaryHeap : IEnumerable
     {
-        private List<int> heap;
+        private readonly List<int> heap;
 
-        public int GetSize
-        {
-            get
-            {
-                return heap.Capacity;
-            }
-        }
+        public int GetSize => heap.Capacity;
 
         public BinaryHeap()
         {
             heap = new List<int>();
         }
 
-        public BinaryHeap(int[] collection)
+        public BinaryHeap(int[] elements)
         {
-            heap = new List<int>(collection);
+            heap = new List<int>(elements);
+
             BuildHeap(); //Also we can say ShiftDown
         }
 
@@ -53,6 +44,7 @@ namespace DSA
             else
             {
                 heap.Add(element);
+
                 ShiftUp(heap.Count - 1);
             }
         }
@@ -101,21 +93,21 @@ namespace DSA
         {
             if ((index > heap.Count - 1) || (index < 0))
             {
-                throw new FormatException("Wrong index");
+                throw new ArgumentOutOfRangeException("Wrong index");
             }
-            else { }
 
             if (heap[index] > value)
             {
                 heap[index] = value;
+
                 Heapify(index);
             }
             else if (heap[index] < value)
             {
                 heap[index] = value;
+
                 ShiftUp(index);
             }
-            else { }
         }
 
         /// <summary>
@@ -139,38 +131,34 @@ namespace DSA
         ///     <para>
         ///         Heapify - ShiftDown.
         ///         Operation which downs element if it less than his max value descendant.
-        ///         Операция, которая опускает на более низкий уровень элемент, если он меньше
-        ///         своих потомков, а именно меняется местами с найбольшим потомком.
         ///         
         ///         T(n) = O(log n), where n - numbers of elements in heap.
         ///     </para>
         /// </summary>
-        /// <param name="indexOfElement">Index of element</param>
-        private void Heapify(int indexOfElement)
+        /// <param name="startIndex">Index to start</param>
+        private void Heapify(int startIndex)
         {
-            int leftChild = 2 * indexOfElement + 1;
-            int rightChild = 2 * indexOfElement + 2;
-            int large = indexOfElement;
+            var parentIndex = startIndex;
+            var leftChildIndex = 2 * startIndex + 1;
+            var rightChildIndex = 2 * startIndex + 2;
 
-            if (leftChild < heap.Count - 1 && heap[leftChild] > heap[large])
+            if (leftChildIndex < heap.Count - 1 && heap[leftChildIndex] > heap[parentIndex])
             {
-                large = leftChild;
+                parentIndex = leftChildIndex;
             }
-            else { }
 
-            if (rightChild < heap.Count - 1 && heap[rightChild] > heap[large])
+            if (rightChildIndex < heap.Count - 1 && heap[rightChildIndex] > heap[parentIndex])
             {
-                large = rightChild;
+                parentIndex = rightChildIndex;
             }
-            else { }
 
-            if (large != indexOfElement)
+            if (parentIndex != startIndex)
             {
-                int temp = heap[large];
-                heap[large] = heap[indexOfElement];
-                heap[indexOfElement] = temp;
+                var temp = heap[parentIndex];
+                heap[parentIndex] = heap[startIndex];
+                heap[startIndex] = temp;
 
-                Heapify(large);
+                Heapify(parentIndex);
             }
             else
             {
@@ -180,33 +168,30 @@ namespace DSA
 
         /// <summary>
         ///     <para>
-        ///         ShiftUP - operation whih ups element if it larger than his parent(father).
+        ///         ShiftUP - operation which ups element if it larger than his parent.
         ///         Using when we change element or add new element in heap.
-        ///         Операция, которая подымает на более высокий уровень элемент если он больше
-        ///         родителя, а именно меняется с ним местами.
         ///         
         ///         T(n) = O(log n), where n - numbers of elements in heap.
         ///     </para>
         /// </summary>
-        /// <param name="indexOfElement">Index of element</param>
-        private void ShiftUp(int indexOfElement)
+        /// <param name="startIndex">Index to start</param>
+        private void ShiftUp(int startIndex)
         {
-            int parentIndex = (indexOfElement - 1) / 2;
+            int parentIndex = (startIndex - 1) / 2;
 
-            if (heap[parentIndex] < heap[indexOfElement])
+            if (heap[parentIndex] < heap[startIndex])
             {
-                int temp = heap[parentIndex];
-                heap[parentIndex] = heap[indexOfElement];
-                heap[indexOfElement] = temp;
+                var temp = heap[parentIndex];
+                heap[parentIndex] = heap[startIndex];
+                heap[startIndex] = temp;
 
                 ShiftUp(parentIndex);
             }
-            else { }
         }
 
         public IEnumerator GetEnumerator()
         {
-            return this.heap.GetEnumerator();
+            return heap.GetEnumerator();
         }
     }
 }
